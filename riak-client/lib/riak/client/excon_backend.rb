@@ -31,6 +31,8 @@ module Riak
         params[:query] = uri.query if uri.query
         params[:body] = data if [:put,:post].include?(method)
         params[:idempotent] = (method != :post)
+        
+        puts "\nParameters: #{params.inspect}\n"
 
         if block_given?
           pump = Pump.new(block)
